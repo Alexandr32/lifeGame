@@ -68,7 +68,7 @@ export class AppComponent {
 
       await this.tact(() => {
 
-        this.lifeGameService.integration(this.array)
+        this.lifeGameService.tact(this.array)
         console.log('work');
 
         if(i === this.integration) {

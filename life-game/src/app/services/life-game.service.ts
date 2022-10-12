@@ -9,13 +9,13 @@ export class LifeGameService {
 
     let result = array
     for (var i = 0; i < integration; i++) {
-      result = this.integration(result)
+      result = this.tact(result)
     }
 
     return array;
   }
 
-  integration(array: boolean[][]): boolean[][] {
+  tact(array: boolean[][]): boolean[][] {
 
     // Плоский список всех пунктов с ключем x:y
     const map: Map<string, boolean> = this.getFlatList(array)
