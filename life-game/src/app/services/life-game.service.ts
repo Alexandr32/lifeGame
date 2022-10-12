@@ -22,15 +22,7 @@ export class LifeGameService {
 
     array.forEach((row: boolean[], y: number) => {
 
-      // if(y > 1) {
-      //   return
-      // }
-
       row.forEach((item: boolean, x: number,) => {
-
-        // if(x > 1) {
-        //   return
-        // }
 
         const listPopulation: {x: number, y: number}[] = this.getNeighborsOf(x, y);
 
