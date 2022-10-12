@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="controls">
+
+    <label for="size">Размер</label>
+    <input type="number" id="size"
+        [ngModel]="size"
+        [disabled]="disableButton"
+        (ngModelChange)="setSize($event)">
+
+    <label for="count">Количество шагов</label>
+    <input type="number" id="count"
+          [disabled]="disableButton"
+             [(ngModel)]="integration">
+
+    <button (click)="startGame()">Пуск</button>
+  </div>
+
+<div class="box">
+
+  <div class="row" *ngFor="let y of array; let i = index">
+    <div class="item"
+      *ngFor="let x of y; let j = index"
+      [class.green]="x"
+      (click)="clickItem(i, j)">
+      </div>
+  </div>
+</div>
+
+</body>
+</html>
