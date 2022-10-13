@@ -14,22 +14,22 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('Должен создать приложение', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'life-game'`, () => {
+  it(`Должен иметь в качестве заголовка 'life-game'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('life-game');
   });
 
-  it('should render title', () => {
+  it('Должены отобразиться блок с настройками игры', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('life-game app is running!');
+    expect(!!compiled.querySelector('.controls')?.textContent).toBeTrue();
   });
 });
