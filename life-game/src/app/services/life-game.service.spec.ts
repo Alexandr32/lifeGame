@@ -18,7 +18,7 @@ describe('LifeGameService', () => {
 
   it('Список соседей не должен быть пустой', () => {
     // act
-    const result: Point[] = lifeGameService.getNeighborsOf({ x: 0, y: 0 })
+    const result: Point[] = (lifeGameService as any).getNeighborsOf({ x: 0, y: 0 })
 
     // assert
     expect(!!result).toBeTrue()
@@ -26,7 +26,7 @@ describe('LifeGameService', () => {
 
   it('Список соседей должен состоять из 8 координат', () => {
     // act
-    const result: Point[] = lifeGameService.getNeighborsOf({ x: 0, y: 0 })
+    const result: Point[] = (lifeGameService as any).getNeighborsOf({ x: 0, y: 0 })
 
     // assert
     expect(result.length).toBe(8)
@@ -36,7 +36,7 @@ describe('LifeGameService', () => {
 
 
     // act
-    const result: Point[] = lifeGameService.getNeighborsOf({ x: 0, y: 0 })
+    const result: Point[] = (lifeGameService as any).getNeighborsOf({ x: 0, y: 0 })
 
     const value = [
       { x: -1, y: -1 },
@@ -61,7 +61,7 @@ describe('LifeGameService', () => {
   it('Список соседей для отрицательных координат -2:-2 должны иметь правильне координаты', () => {
 
     // act
-    const result: Point[] = lifeGameService.getNeighborsOf({ x: -2, y: -2 })
+    const result: Point[] = (lifeGameService as any).getNeighborsOf({ x: -2, y: -2 })
 
     const value = [
       { x: -3, y: -3 },
@@ -87,7 +87,7 @@ describe('LifeGameService', () => {
   it('Список соседей для отрицательных координат -2:2 должны иметь правильне координаты', () => {
 
     // act
-    const result: Point[] = lifeGameService.getNeighborsOf({ x: -2, y: 2 })
+    const result: Point[] = (lifeGameService as any).getNeighborsOf({ x: -2, y: 2 })
 
     const value = [
       { x: -3, y: 1 },
@@ -111,7 +111,7 @@ describe('LifeGameService', () => {
   it('Список соседей для отрицательных координат 2:2 должны иметь правильне координаты', () => {
 
     // act
-    const result: Point[] = lifeGameService.getNeighborsOf({ x: 2, y: 2 })
+    const result: Point[] = (lifeGameService as any).getNeighborsOf({ x: 2, y: 2 })
 
     const value = [
       { x: 1, y: 1 },

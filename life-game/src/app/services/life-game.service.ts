@@ -59,7 +59,7 @@ export class LifeGameService {
   }
 
   // Список соседей
-  getNeighborsOf(point: Point): Point[] {
+  private getNeighborsOf(point: Point): Point[] {
 
   const {x, y} = point
 

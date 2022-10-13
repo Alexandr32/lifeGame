@@ -291,3 +291,4 @@ __pycache__/
 *.trx
 life-game/.angular
 life-game/.vscode
+life-game/coverage
