@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Point } from "../models/point.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,7 @@ export class LifeGameService {
 
       row.forEach((item: boolean, x: number,) => {
 
-        const listPopulation: {x: number, y: number}[] = this.getNeighborsOf(x, y);
-
-        const isAlive = this.isAlive(listPopulation, map)
+        const isAlive = this.isAlive({x, y}, map)
 
         row[x] = isAlive
 
@@ -60,29 +59,32 @@ export class LifeGameService {
   }
 
   // Список соседей
-  getNeighborsOf(x: number, y: number): {x: number, y: number}[] {
+  getNeighborsOf(point: Point): Point[] {
+
+  const {x, y} = point
+
     return [
-      // Соседи сверху:
       { x: x - 1, y: y - 1 },
       { x, y: y - 1 },
       { x: x + 1, y: y - 1 },
 
-      // ...С каждой стороны:
       { x: x - 1, y },
       { x: x + 1, y },
 
-      // ...И под указанной клеткой:
       { x: x - 1, y: y + 1 },
       { x, y: y + 1 },
       { x: x + 1, y: y + 1 },
     ];
   }
 
-  // Клетка остаётся живой, только если у неё 2 или 3 живых соседа
-  isAlive(listPopulation: {x: number, y: number}[], map: Map<string, boolean>): boolean {
+  // если живых соседей меньше двух или больше трёх клетка умирает
+  isAlive(point: Point, map: Map<string, boolean>): boolean {
+
+    const listPopulation: Point[] = this.getNeighborsOf(point);
+
     const result: boolean[] = []
 
-    listPopulation.forEach((env: {x: number, y: number}) => {
+    listPopulation.forEach((env: Point) => {
       const value = map.get(`${env.x}:${env.y}`)
       if(value) {
         result.push(value)
@@ -91,7 +93,6 @@ export class LifeGameService {
 
     const incloudArray = result.filter(item => item)
 
-   // если живых соседей меньше двух или больше трёх клетка умирает
    if(incloudArray.length < 2 || incloudArray.length > 3) {
     return false
    }
